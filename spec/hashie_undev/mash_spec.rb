@@ -1,12 +1,13 @@
 require 'spec_helper'
 
-describe HashieUndev::Mash do 
+describe HashieUndev::Mash do
 
 	before(:each) do
 		@mash = HashieUndev::Mash.new
-	end
+	end 
 
 	describe 'call methods' do
+	
 		it 'call method should return nil' do
 			@mash.name.should be_nil
 		end
@@ -26,12 +27,20 @@ describe HashieUndev::Mash do
 		end
 	end
 
-	describe 'call inspect' do
-		it 'should return string' do
-			@mash.name = 'Name'
-			@mash.email = 'name@mail.com'
-			@mash.inspect.should eql("Hashie::Mash name='Name' email='name@mail.com'")
+	describe 'bang methods' do
+
+		it 'call bang methods for multi-level assignment' do
+			@mash.author!.name = 'Author Name'
+			@mash.author.name.should eql('Author Name')
 		end
+
+		it 'call under-bang methods for multi-level testing' do
+			@mash.author.should be_nil
+			@mash.author_.name?.should be_false 
+			@mash.author!.name = 'Author Name'
+			@mash.author_.name?.should be_true
+		end
+
 	end
 
 end
