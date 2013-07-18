@@ -8,8 +8,14 @@ describe HashieUndev::Mash do
 
 	describe 'call bool methods' do
 		it 'call name? should return false' do
-			@mash.name? eq(false)
+			@mash.name?.should eq(false)
 		end
+
+		it 'call = should def hash key' do
+			@mash.name = 'Name'
+			@mash.name.should eq('Name')
+		end
+
 	end
 
 end
