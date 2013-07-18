@@ -1,5 +1,7 @@
 require "hashie_undev/version"
 
 module HashieUndev
-  # Your code goes here...
+
+  autoload :Mash, 'hashie_undev/mash'
+
 end
