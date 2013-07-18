@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 	gem 'guard-rspec'
 	gem 'ruby-prof'
 	gem 'simplecov'
+	gem 'pry'
 
 gemspec

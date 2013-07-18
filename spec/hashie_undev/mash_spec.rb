@@ -18,7 +18,7 @@ describe HashieUndev::Mash do
 
 		it 'call = should init hash key and return value' do
 			@mash.name = 'Name'
-			@mash.name.should eq('Name')
+			@mash.name.should eql('Name')
 		end
 
 		it 'call method_name? should return true after =' do
@@ -34,12 +34,12 @@ describe HashieUndev::Mash do
 			@mash.author.name.should eql('Author Name')
 		end
 
-		it 'call under-bang methods for multi-level testing' do
-			@mash.author.should be_nil
-			@mash.author_.name?.should be_false 
-			@mash.author!.name = 'Author Name'
-			@mash.author_.name?.should be_true
-		end
+		# it 'call under-bang methods for multi-level testing' do
+		# 	@mash.author.should be_nil
+		# 	@mash.author_.name?.should be_false 
+		# 	@mash.author!.name = 'Author Name'
+		# 	@mash.author_.name?.should be_true
+		# end
 
 	end
 
