@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
+	gem 'rspec'
+	gem 'guard-rspec'
+	gem 'ruby-prof'
 
 gemspec
