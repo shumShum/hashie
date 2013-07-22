@@ -9,21 +9,21 @@ describe HashieUndev::Mash do
 	describe 'call methods' do
 	
 		it 'call method should return nil' do
-			@mash.name.should be_nil
+			expect(@mash.name).to be_nil
 		end
 
 		it 'call method_name? should return false' do
-			@mash.name?.should be_false
+			expect(@mash.name?).to be_false
 		end
 
 		it 'call = should init hash key and return value' do
 			@mash.name = 'Name'
-			@mash.name.should eql('Name')
+			expect(@mash.name).to eql('Name')
 		end
 
 		it 'call method_name? should return true after =' do
 			@mash.name = 'Name'
-			@mash.name?.should be_true
+			expect(@mash.name?).to be_true
 		end
 	end
 
@@ -31,7 +31,7 @@ describe HashieUndev::Mash do
 
 		it 'call bang methods for multi-level assignment' do
 			@mash.author!.name = 'Author Name'
-			@mash.author.name.should eql('Author Name')
+			expect(@mash.author.name).to eql('Author Name')
 		end
 
 		# it 'call under-bang methods for multi-level testing' do
