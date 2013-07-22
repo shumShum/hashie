@@ -44,6 +44,10 @@ describe HashieUndev::Dash do
 				expect(@p[:occupation]).to eql('Rubyist')
 			end
 
+			it 'call miss key like hash' do
+				expect{@p[:awesome]}.to raise_error NoMethodError 
+			end
+
 		end
 
 	end

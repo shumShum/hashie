@@ -17,6 +17,11 @@ module HashieUndev
 		def method_missing(meth, *args, &block)
 			method_name = meth.to_s[-1] == '=' ? meth.to_s[0..-2] : meth.to_s
 			method_opt = meth.to_s[-1]
+			if method_name == '[]'
+				method_name = args[0].to_s
+				args = args[1..-1]
+			end
+
 			raise NoMethodError unless @obj_hash.has_key?(method_name.to_sym)
 			if method_opt == '='
 				define_singleton_method(meth) do |value| 
