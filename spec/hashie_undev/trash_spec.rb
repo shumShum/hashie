@@ -19,4 +19,22 @@ describe HashieUndev::Trash do
 		end
 	end
 
+	describe 'init trash with transform_with' do
+		before(:each) do
+			class Result < HashieUndev::Trash
+			  property :id, :transform_with => lambda { |v| v.to_i }
+			  property :created_at, :from => :creation_date, :with => lambda { |v| Time.parse(v) }
+			end
+			@result = Result.new(:id => '123', :creation_date => '2012-03-30 17:23:28')
+		end
+
+		it 'id as integer' do
+			expect(@result.id.class).to eql(Fixnum)
+		end
+
+		it 'created_at as Time' do
+			expect(@result.created_at.class).to eql(Time)
+		end
+	end
+
 end

@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 	gem 'guard-rspec'
 	gem 'ruby-prof'
 	gem 'simplecov'
+	gem 'coveralls', require: false
 	gem 'pry'
 
 gemspec
