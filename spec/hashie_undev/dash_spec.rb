@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe HashieUndev::Dash do
 
-	# before(:each) do
-	# 	@dash = HashieUndev::Dash.new
-	# end
-
 	describe 'init dash' do
 		before(:each) do
 			class Person < HashieUndev::Dash

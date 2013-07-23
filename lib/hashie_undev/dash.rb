@@ -4,13 +4,14 @@ module HashieUndev
 
 		def initialize(args = {})
 			@obj_hash = args
-			class_hash = self.class.class_hash
-			class_hash.each_pair do |key, value|
-				if value['required'] && !args.has_key?(key)
-					raise ArgumentError, "The property #{key} is required for this Dash"
-				end
-				unless value['key_val'].nil? || args.has_key?(key)
-					@obj_hash[key] = value['key_val']
+			unless class_hash.nil?
+				class_hash.each_pair do |key, value|
+					if value['required'] && !args.has_key?(key)
+						raise ArgumentError, "The property #{key} is required for this Dash"
+					end
+					unless value['key_val'].nil? || args.has_key?(key)
+						@obj_hash[key] = value['key_val']
+					end
 				end
 			end
 		end
@@ -26,7 +27,7 @@ module HashieUndev
 			raise NoMethodError unless @obj_hash.has_key?(method_name.to_sym)
 			if method_opt == '='
 				define_singleton_method(meth) do |value| 
-					if value.nil? && self.class.class_hash[method_name.to_sym]['required']
+					if value.nil? && class_hash[method_name.to_sym]['required']
 						raise ArgumentError, "The property #{method_name} is required for this Dash"
 					end
 					@obj_hash[method_name.to_sym] = value 
@@ -47,8 +48,10 @@ module HashieUndev
 				self.class_hash[key_name]['required'] = options.has_key?(:required) ? options[:required] : false
 			end
 		end
-		
+
+		def class_hash
+			self.class.class_hash
+		end
 
 	end
-
 end

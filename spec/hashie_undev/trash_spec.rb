@@ -2,20 +2,20 @@ require 'spec_helper'
 
 describe HashieUndev::Trash do
 
-	before(:each) do
-		@trash = HashieUndev::Trash.new
-	end
-
 	describe 'init trash with from' do
 		before(:each) do
-			class Person < Hashie::Trash
+			class TPerson < HashieUndev::Trash
 			  property :first_name, :from => :firstName
 			end
+			@p = TPerson.new(:firstName => 'Bob')
 		end
 
 		it 'call propertys alias' do
-			p = Person.new(:firstName => 'Bob')
-			expect(p.first_name).it eql('Bob')
+			expect(@p.first_name).to eql('Bob')
+		end
+
+		it 'call propertys alias like method' do
+			expect(@p.firstName).to eql('Bob')
 		end
 	end
 
