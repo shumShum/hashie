@@ -25,5 +25,9 @@ describe HashieUndev::Clash do
 			expect(@c).to eql(valid_hash)
 		end
 
+		it 'call missing key without where!' do
+			expect{ @c.abc(:qwe).where(asd: 1) }.to raise_error NoMethodError
+		end
+
 	end
 end
