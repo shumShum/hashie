@@ -5,5 +5,6 @@ module HashieUndev
   autoload :Mash, 'hashie_undev/mash'
   autoload :Dash, 'hashie_undev/dash'
   autoload :Trash, 'hashie_undev/trash'
+  autoload :Clash, 'hashie_undev/clash'
 
 end
